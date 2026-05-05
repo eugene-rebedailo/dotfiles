@@ -1,0 +1,13 @@
+# Read `man 5 sway` for a complete reference.
+
+include ./config.d/01-vars.conf
+include ./config.d/02-output.conf
+output * bg /usr/share/backgrounds/sway/golden-lake.png fill
+include ./config.d/03-input.conf
+include ./config.d/04-idle.conf
+include ./config.d/05-layout.conf
+include ./config.d/10-keybind.conf
+include ./config.d/15-util.conf
+include ./config.d/25-bar.conf
+
+include /etc/sway/config.d/*

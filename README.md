@@ -6,4 +6,5 @@ This currently contains latest dotfiles for my personal machine (codename Arcolo
 configs are shared with my other machines (such as, for instance, my tmux and nvim configurations).
 
 ## Usage
-Invoke bash scripts in order of their name. Start with package installs (if needed), then proceed to configuration, then installation of dotfiles.
+Invoke bash scripts in order of their name.
+Start with package installs (if needed), then proceed to applying configuration. Configuration step requires GNU `stow`.

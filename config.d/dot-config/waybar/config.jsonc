@@ -1,0 +1,70 @@
+[
+    // Left screen
+    {
+        "layer": "top",
+        "output": [ "DP-3" ],
+        "modules-left": ["sway/workspaces", "sway/mode"],
+        "modules-center": ["sway/window"],
+        "sway/window": {
+            "max-length": 50
+        }
+    },
+
+    // Right screen
+    {
+        "layer": "top",
+        "output": [ "DP-2" ],
+        "modules-left": ["sway/workspaces", "sway/mode"],
+        "modules-center": ["sway/window"],
+        "modules-right": ["clock", "network", "tray", "custom/power" ],
+        "sway/window": {
+            "max-length": 50
+        },
+        "clock": {
+            "format": "{:%H:%M}  ",
+            "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>",
+            "calendar": {
+                "mode": "year",
+                "mode-mon-col": 3,
+                "weeks-pos": "right",
+                "on-scroll": 1,
+                "format": {
+                    "months": "<span color='#ffead3'><b>{}</b></span>",
+                    "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            },
+            "actions":  {
+                "on-click-right": "mode",
+                "on-scroll-up": "tz_up",
+                "on-scroll-down": "tz_down",
+                "on-scroll-up": "shift_up",
+                "on-scroll-down": "shift_down"
+            }
+        },
+        "network": {
+            "format-wifi": "",
+            "format-disconnected": "Disconnected", //An empty format will hide the module.
+            "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+            "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+            "tooltip-format-disconnected": "Disconnected",
+            "max-length": 50,
+            "on-click": "alacritty --command impala"
+        },
+        "custom/power": {
+            "format" : "⏻ ",
+            "tooltip": false,
+            "menu": "on-click",
+            "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+            "menu-actions": {
+                "shutdown": "shutdown",
+                "reboot": "reboot",
+                "suspend": "systemctl suspend",
+                "hibernate": "systemctl hibernate"
+            }
+        }
+    }
+]
