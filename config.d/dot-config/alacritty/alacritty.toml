@@ -3,3 +3,6 @@ live_config_reload = true
 
 [window]
 decorations = "None"
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Normal" }
