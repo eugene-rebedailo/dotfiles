@@ -6,8 +6,12 @@ function fatal()
     exit 1
 }
 
-# Home directory package has special handling since home directory depends on current user.
+# XDG_CONFIG configs
 stow --dir=config.d --target $HOME/.config --stow dot-config --dotfiles
+
+# Home configs
+stow --dir=config.d --target $HOME --stow home --dotfiles
+
 
 # Root package will be applied to root directory. Duh...
 if [ "$EUID" -eq 0 ]; then
