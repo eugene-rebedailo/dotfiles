@@ -1,28 +1,36 @@
 [
-    // Left screen
+    // Right screen
     {
         "layer": "top",
+        "name": "right-bar",
         "output": [ "DP-3" ],
         "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": ["sway/window"],
+        "include": [
+            "./workspace.config.json"
+        ],
         "sway/window": {
             "max-length": 50
         }
     },
 
-    // Right screen
+    // Left screen
     {
         "layer": "top",
+        "name": "left-bar",
         "output": [ "DP-2" ],
         "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": ["sway/window"],
-        "modules-right": ["clock", "network", "tray", "custom/power" ],
+        "modules-right": ["clock", "network", "tray", "wireplumber", "custom/power" ],
+        "include": [
+            "./workspace.config.json"
+        ],
         "sway/window": {
             "max-length": 50
         },
         "clock": {
             "format": "{:%H:%M}  ",
-            "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+            "format-alt": "{:%A, %B %d, %Y (%R)}  ",
             "tooltip-format": "<tt><small>{calendar}</small></tt>",
             "calendar": {
                 "mode": "year",
@@ -46,7 +54,7 @@
             }
         },
         "network": {
-            "format-wifi": "",
+            "format-wifi": "   ",
             "format-disconnected": "Disconnected", //An empty format will hide the module.
             "tooltip-format": "{ifname} via {gwaddr} 󰊗",
             "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
@@ -54,16 +62,23 @@
             "max-length": 50,
             "on-click": "alacritty --command impala"
         },
+        "wireplumber": {
+            "format": "{icon}  {volume}%",
+            "format-muted": "",
+            "on-click": "helvum",
+            "format-icons": ["", "", ""],
+            "max-volume": 120,
+            "scroll-step": 5
+        },
         "custom/power": {
-            "format" : "⏻ ",
+            "format" : " ⏻  ",
             "tooltip": false,
             "menu": "on-click",
             "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
             "menu-actions": {
+                "lock": "swaylock -f -c 000000",
                 "shutdown": "shutdown",
-                "reboot": "reboot",
-                "suspend": "systemctl suspend",
-                "hibernate": "systemctl hibernate"
+                "reboot": "reboot"
             }
         }
     }

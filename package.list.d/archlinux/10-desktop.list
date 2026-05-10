@@ -1,4 +1,5 @@
 wayland
+xorg-xwayland
 sway
 swaylock
 swayidle
