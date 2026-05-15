@@ -11,14 +11,14 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.o.number = true
-vim.o.relativenumber = true
+vim.o.relativenumber = true 
 vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = 'unnamedplus'
 end)
 
 -- No break indent - I dislike long lines of text.
