@@ -21,10 +21,11 @@
         "output": [ "DP-2" ],
         "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": ["sway/window"],
-        "modules-right": ["clock", "network", "tray", "custom/notify", "wireplumber", "custom/power" ],
+        "modules-right": ["clock", "network", "tray", "custom/notify", "mpris", "wireplumber", "custom/power" ],
         "include": [
             "./workspace.config.json",
-            "./notify.config.json"
+            "./notify.config.json",
+            "./mpris.config.json"
         ],
         "sway/window": {
             "max-length": 50

@@ -1,0 +1,13 @@
+{
+    "mpris": {
+        "format": "<span size='larger'>{player_icon}</span> {title}",
+        "format-paused": "<span size='larger'>{status_icon}</span> {title}",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        }
+    }
+}
