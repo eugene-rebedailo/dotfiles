@@ -40,11 +40,8 @@ vim.lsp.config('lua_ls', {
         })
     end,
     on_attach = function(client, bufnr)
-        vim.lsp.completion.enable(true, client.id, bufnr, {
-            autotrigger = true,
-        })
-
         require('keymap').bind_lsp_commands()
+        require('autocomplete').enable_autocomplete(client, bufnr)
     end,
     settings = {
         Lua = {},
@@ -62,11 +59,8 @@ vim.lsp.config('rust_analyzer', {
         },
     },
     on_attach = function(client, bufnr)
-        vim.lsp.completion.enable(true, client.id, bufnr, {
-            autotrigger = true,
-        })
-
         require('keymap').bind_lsp_commands()
+        require('autocomplete').enable_autocomplete(client, bufnr)
     end,
 })
 
