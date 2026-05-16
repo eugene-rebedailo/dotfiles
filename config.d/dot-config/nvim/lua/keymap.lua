@@ -71,7 +71,6 @@ function M.bind_lsp_commands()
     vim.keymap.set('n', '<leader>gd', function()
         require('telescope.builtin').lsp_definitions()
     end, { desc = '[G]oto [D]efinitions' })
-
 end
 
 return M

@@ -52,3 +52,22 @@ vim.lsp.config('lua_ls', {
 })
 
 vim.lsp.enable 'lua_ls'
+
+vim.lsp.config('rust_analyzer', {
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                enable = true,
+            },
+        },
+    },
+    on_attach = function(client, bufnr)
+        vim.lsp.completion.enable(true, client.id, bufnr, {
+            autotrigger = true,
+        })
+
+        require('keymap').bind_lsp_commands()
+    end,
+})
+
+vim.lsp.enable 'rust_analyzer'
