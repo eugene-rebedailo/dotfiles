@@ -6,6 +6,7 @@ output * bg /usr/share/backgrounds/sway/golden-lake.png fill
 include ./config.d/03-input.conf
 include ./config.d/04-idle.conf
 include ./config.d/05-layout.conf
+include ./config.d/06-notify.conf
 include ./config.d/07-xorg.conf
 include ./config.d/10-keybind.conf
 include ./config.d/15-util.conf
