@@ -2,4 +2,5 @@ ripgrep
 fd
 fzf
 jq
+tree-sitter-cli
 neovim

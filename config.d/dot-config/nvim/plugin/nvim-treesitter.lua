@@ -14,3 +14,5 @@ vim.pack.add {
     'https://github.com/neovim-treesitter/treesitter-parser-registry',
     'https://github.com/neovim-treesitter/nvim-treesitter',
 }
+
+require('nvim-treesitter').install { 'rust', 'lua' }

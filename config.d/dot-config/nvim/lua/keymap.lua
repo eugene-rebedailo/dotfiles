@@ -58,7 +58,7 @@ end)
 function M.bind_lsp_commands()
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
-    vim.keymap.set({ 'n', 'x' }, '<leader>ga', vim.lsp.buf.rename, { desc = '[G]oto Code [A]ction' })
+    vim.keymap.set({ 'n', 'x' }, '<leader>ga', vim.lsp.buf.code_action, { desc = '[G]oto Code [A]ction' })
 
     vim.keymap.set('n', '<leader>gr', function()
         require('telescope.builtin').lsp_references()

@@ -9,5 +9,6 @@ require('conform').setup {
         xml = { 'csharpier' },
         cs = { 'csharpier' },
         json = { 'jq' },
+        rust = { 'rustfmt' }
     },
 }

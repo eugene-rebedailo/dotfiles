@@ -6,3 +6,4 @@ decorations = "None"
 
 [font]
 normal = { family = "FiraCode Nerd Font", style = "Normal" }
+size = 12.0
