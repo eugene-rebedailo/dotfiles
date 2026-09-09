@@ -1,5 +1,6 @@
 vim.pack.add {
     'https://github.com/neovim/nvim-lspconfig',
+    'https://github.com/seblyng/roslyn.nvim',
 }
 
 vim.lsp.config('lua_ls', {
@@ -65,3 +66,40 @@ vim.lsp.config('rust_analyzer', {
 })
 
 vim.lsp.enable 'rust_analyzer'
+local roslyn = require 'roslyn'
+roslyn.setup {
+    ft = { 'cs', 'csproj' },
+    opts = {
+        filewatching = 'roslyn',
+        config = {
+            settings = {
+                ['csharp|background_analysis'] = {
+                    dotnet_analyzer_diagnostics_scope = 'openFiles',
+                    dotnet_compiler_diagnostics_scope = 'fullSolution',
+                },
+                ['csharp|completion'] = {
+                    dotnet_show_completion_items_from_unimported_namespaces = true,
+                },
+            },
+        },
+    },
+}
+
+vim.lsp.config('roslyn', {
+    on_attach = function(client, bufnr)
+        require('keymap').bind_lsp_commands()
+        require('autocomplete').enable_autocomplete(client, bufnr)
+    end,
+
+    settings = {
+        ['csharp|inlay_hints'] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true,
+        },
+        ['csharp|code_lens'] = {
+            dotnet_enable_references_code_lens = true,
+        },
+    },
+})
+
+vim.lsp.enable 'roslyn'

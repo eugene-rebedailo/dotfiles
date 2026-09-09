@@ -11,8 +11,8 @@ vim.api.nvim_create_autocmd('PackChanged', {
 })
 
 vim.pack.add {
-    'https://github.com/neovim-treesitter/treesitter-parser-registry',
-    'https://github.com/neovim-treesitter/nvim-treesitter',
+    'https://github.com/nvim-treesitter/treesitter-parser-registry',
+    'https://github.com/nvim-treesitter/nvim-treesitter',
 }
 
-require('nvim-treesitter').install { 'rust', 'lua' }
+require('nvim-treesitter').install { 'rust', 'lua', 'c_sharp', 'xml' }

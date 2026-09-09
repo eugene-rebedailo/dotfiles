@@ -4,4 +4,8 @@ vim.pack.add {
 
 require('mason').setup {
     log_level = vim.log.levels.WARN,
+    registries = {
+        'github:mason-org/mason-registry',
+        'github:Crashdummyy/mason-registry'
+    }
 }
