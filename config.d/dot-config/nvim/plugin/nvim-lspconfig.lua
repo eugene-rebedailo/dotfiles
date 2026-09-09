@@ -40,9 +40,8 @@ vim.lsp.config('lua_ls', {
             },
         })
     end,
-    on_attach = function(client, bufnr)
+    on_attach = function()
         require('keymap').bind_lsp_commands()
-        require('autocomplete').enable_autocomplete(client, bufnr)
     end,
     settings = {
         Lua = {},
@@ -59,36 +58,32 @@ vim.lsp.config('rust_analyzer', {
             },
         },
     },
-    on_attach = function(client, bufnr)
+    on_attach = function()
         require('keymap').bind_lsp_commands()
-        require('autocomplete').enable_autocomplete(client, bufnr)
     end,
 })
 
 vim.lsp.enable 'rust_analyzer'
 local roslyn = require 'roslyn'
 roslyn.setup {
-    ft = { 'cs', 'csproj' },
-    opts = {
+    config = {
+        filetypes = { 'cs', 'csproj' },
         filewatching = 'roslyn',
-        config = {
-            settings = {
-                ['csharp|background_analysis'] = {
-                    dotnet_analyzer_diagnostics_scope = 'openFiles',
-                    dotnet_compiler_diagnostics_scope = 'fullSolution',
-                },
-                ['csharp|completion'] = {
-                    dotnet_show_completion_items_from_unimported_namespaces = true,
-                },
+        settings = {
+            ['csharp|background_analysis'] = {
+                dotnet_analyzer_diagnostics_scope = 'fullSolution',
+                dotnet_compiler_diagnostics_scope = 'fullSolution',
+            },
+            ['csharp|completion'] = {
+                dotnet_show_completion_items_from_unimported_namespaces = true,
             },
         },
     },
 }
 
 vim.lsp.config('roslyn', {
-    on_attach = function(client, bufnr)
+    on_attach = function()
         require('keymap').bind_lsp_commands()
-        require('autocomplete').enable_autocomplete(client, bufnr)
     end,
 
     settings = {
@@ -98,6 +93,9 @@ vim.lsp.config('roslyn', {
         },
         ['csharp|code_lens'] = {
             dotnet_enable_references_code_lens = true,
+        },
+        ['csharp|completions'] = {
+            dotnet_show_completion_items_from_unimported_namespaces = true,
         },
     },
 })
