@@ -56,8 +56,10 @@ end)
 
 -- Bind LSP commands - will be called lazily when LSP attaches.
 function M.bind_lsp_commands()
+    vim.keymap.set('n', '<leader>r', '<Nop>', { desc = '[R]e...' })
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
+    vim.keymap.set('n', '<leader>g', '<Nop>', { desc = '[G]oto' })
     vim.keymap.set({ 'n', 'x' }, '<leader>ga', vim.lsp.buf.code_action, { desc = '[G]oto Code [A]ction' })
 
     vim.keymap.set('n', '<leader>gr', function()
@@ -77,6 +79,36 @@ function M.bind_lsp_commands()
             require('workspace-diagnostics').populate_workspace_diagnostics(client, 0)
         end
     end, { desc = '[R]epopulate Workspace [D]iagnostics' })
+end
+
+-- Bind debugging commands - will be called lazily if debugging supported for
+-- current buf.
+function M.bind_debug_commands()
+    vim.keymap.set('n', '<leader>d', '<Nop>', { desc = '[D]ebug' })
+    vim.keymap.set('n', '<leader>d!', function()
+        require('dap').continue()
+    end, { desc = '[D]ebug go[!]' })
+
+    vim.keymap.set('n', '<leader>dl', function()
+        require('dap').step_into()
+    end, { desc = '[D]ebug: Step Into (L)' })
+
+    vim.keymap.set('n', '<leader>dj', function()
+        require('dap').step_over()
+    end, { desc = '[D]ebug: Step Over (J)' })
+
+    vim.keymap.set('n', '<leader>do', function()
+        require('dap').step_out()
+    end, { desc = '[D]ebug: Step [O]ut' })
+
+    vim.keymap.set('n', '<leader>db', function()
+        require('dap').toggle_breakpoint()
+    end, { desc = '[D]ebug: Toggle [B]reakpoint' })
+
+    vim.keymap.set('n', '<leader>t', '<Nop>', { desc = '[T]oggle' })
+    vim.keymap.set('n', '<leader>td', function()
+        require('dapui').toggle()
+    end, { desc = '[T]oggle [D]ebug UI' })
 end
 
 return M
