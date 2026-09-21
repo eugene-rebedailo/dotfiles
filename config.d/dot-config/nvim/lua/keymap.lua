@@ -111,4 +111,18 @@ function M.bind_debug_commands()
     end, { desc = '[T]oggle [D]ebug UI' })
 end
 
+function M.bind_test_commands()
+    vim.keymap.set('n', '<leader>t', '<Nop>', { desc = '[T]oggle' })
+    vim.keymap.set('n', '<leader>ts', '<cmd>lua require("neotest").summary.toggle()<cr>', { desc = '[T]oggle Test [S]ummary' })
+    vim.keymap.set('n', '<leader>n', '<Nop>', { desc = 'Ru[N]' })
+    vim.keymap.set('n', '<leader>nn', '<cmd>lua require("neotest").run.run()<cr>', { desc = 'Ru[N] [N]earest Test' })
+    vim.keymap.set('n', '<leader>na', '<cmd>lua require("neotest").run.run({suite = true })<cr>', { desc = 'Ru[N] [A]ll Tests' })
+    vim.keymap.set('n', '<leader>nf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>', { desc = 'Ru[N] Tests in Current [F]ile' })
+end
+
+function M.bind_debug_test_commands()
+    vim.keymap.set('n', '<leader>d', '<Nop>', { desc = '[D]ebug' })
+    vim.keymap.set('n', '<leader>dn', '<cmd>lua require("neotest").run.run({ strategy = "dap" })<cr>', { desc = '[D]ebug [N]earest Test' })
+end
+
 return M

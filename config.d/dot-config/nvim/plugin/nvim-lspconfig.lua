@@ -77,9 +77,11 @@ vim.lsp.config('roslyn', {
     on_attach = function()
         local keymap = require('keymap')
         keymap.bind_lsp_commands()
-        -- Debugging has nothing to do with LSP, but it really is easier
+        -- Debugging or testing has nothing to do with LSP, but it really is easier
         -- to bundle these options together.
         keymap.bind_debug_commands()
+        keymap.bind_test_commands()
+        keymap.bind_debug_test_commands()
     end,
 
     settings = {
